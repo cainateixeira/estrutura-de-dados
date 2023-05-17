@@ -1,0 +1,166 @@
+1) Crie uma aplicação onde o usuário tenha 3 opções:
+1 – Inserir um nome;
+2 -  remover o nome da posição informada;
+3 - exibir todos os nomes da lista.
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ListaNomes {
+
+    public static void main(String[] args) {
+        ArrayList<String> nomes = new ArrayList<String>();
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("Escolha uma opção:");
+            System.out.println("1 - Inserir um nome");
+            System.out.println("2 - Remover um nome");
+            System.out.println("3 - Exibir todos os nomes");
+            System.out.println("0 - Sair");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    System.out.println("Digite o nome:");
+                    String nome = scanner.next();
+                    nomes.add(nome);
+                    System.out.println("Nome adicionado com sucesso!");
+                    break;
+                case 2:
+                    System.out.println("Digite a posição do nome que deseja remover:");
+                    int posicao = scanner.nextInt();
+                    if (posicao >= 0 && posicao < nomes.size()) {
+                        nomes.remove(posicao);
+                        System.out.println("Nome removido com sucesso!");
+                    } else {
+                        System.out.println("Posição inválida!");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Lista de nomes:");
+                    for (int i = 0; i < nomes.size(); i++) {
+                        System.out.println(i + " - " + nomes.get(i));
+                    }
+                    break;
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
+            }
+
+            System.out.println();
+
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+
+}
+
+2) Um vendedor precisa controlar suas vendas e comissões, a cada mês ele informa o total de vendas do mês, porém ele precisa saber qual o total de comissão que ele recebeu durante todo o ano. Para calcular a comissão deve-se obedecer os seguintes critérios:
+- Valor total até R$500,00 comissão 0,5%;
+
+- Valor total entre R$501,00 até R$800,00 comissão 0,8%;
+
+- Valor total entre R$801,00 até R$1000,00 comissão 1%;
+
+- Valor total entre R$1001,00 até R$3000,00 comissão 1,5%;
+
+- Valor acima de R$3000,00 comissão 2%;
+
+Mostre no final o valor total da venda de cada mês, a porcentagem de comissão e o valor da comissão de seus respectivos meses.
+
+import java.util.Scanner;
+
+public class VendasComissao {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double valorTotalAno = 0;
+        double comissaoAno = 0;
+
+        for (int mes = 1; mes <= 12; mes++) {
+            System.out.println("Digite o valor total de vendas do mês " + mes + ":");
+            double valorTotalMes = scanner.nextDouble();
+            valorTotalAno += valorTotalMes;
+            double comissaoMes = 0;
+
+            if (valorTotalMes <= 500) {
+                comissaoMes = valorTotalMes * 0.005;
+            } else if (valorTotalMes <= 800) {
+                comissaoMes = valorTotalMes * 0.008;
+            } else if (valorTotalMes <= 1000) {
+                comissaoMes = valorTotalMes * 0.01;
+            } else if (valorTotalMes <= 3000) {
+                comissaoMes = valorTotalMes * 0.015;
+            } else {
+                comissaoMes = valorTotalMes * 0.02;
+            }
+
+            comissaoAno += comissaoMes;
+
+            System.out.printf("Valor total de vendas do mês %d: R$ %.2f\n", mes, valorTotalMes);
+            System.out.printf("Porcentagem de comissão do mês %d: %.2f%%\n", mes, comissaoMes * 100 / valorTotalMes);
+            System.out.printf("Valor de comissão do mês %d: R$ %.2f\n", mes, comissaoMes);
+            System.out.println();
+        }
+
+        System.out.printf("Valor total de vendas do ano: R$ %.2f\n", valorTotalAno);
+        System.out.printf("Valor total de comissão do ano: R$ %.2f\n", comissaoAno);
+
+        scanner.close();
+    }
+}
+
+3) Crie uma aplicação (classe Java com método main) para armazenar números inteiros em uma estrutura de dados Vetor de 50 posições e que forneça ao usuário as seguintes opções:
+1 – Inserir um valor inteiro
+
+2 – Pesquisar um valor inteiro
+
+3 – Mostrar todos os valores
+
+4 – Mostrar o menor e o maior valor
+
+5 – Mostrar o primeiro e o último valor do vetor
+
+6 – Mostrar valores pares
+
+7 – Mostrar valores ímpares
+
+8 – Mostrar soma dos valores
+
+0 – Sair
+
+
+Permita que o usuário selecione uma das opções e:
+
+Opção 1:
+Solicite ao usuário um número inteiro para ser adicionado no vetor
+Adicione no vetor
+Não deverá permitir valores duplicados
+Opção 2:
+Solicite ao usuário um número inteiro para ser pesquisado no vetor
+Pesquise o valor no vetor
+Mostre a posição onde encontrou ou avise que não encontrou o valor no vetor, caso não encontrar
+Opção 3:
+Percorra todo o vetor concatenando os valores em uma String
+Mostre em uma mensagem os valores concatenados na String
+Opção 4:
+Percorra todo o vetor identificando qual é o menor e qual é o maior valor contido no vetor
+Mostre em uma mensagem os valores identificados
+Opção 5:
+Mostre em uma mensagem o primeiro e o último valor contido no vetor
+Opção 6:
+Percorra todo o vetor concatenando os valores pares em uma String
+Mostre em uma mensagem os valores identificados
+Opção 7:
+Percorra todo o vetor concatenando os valores ímpares em uma String Mostre em uma mensagem os valores identificados
+Opção 8:
+Percorra todo o vetor somando os valores do vetor
+Mostre em uma mensagem a soma realizada
+Opção 0:
+Termine a aplicação
+

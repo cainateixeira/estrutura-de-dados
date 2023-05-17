@@ -1,0 +1,143 @@
+1) Desenvolva um programa que pergunte ao usuário seu nome e sobrenome através de uma janela de entrada
+(JOptionPane.showInputDialog) e mostre as informações em uma janela de saída(JOptionPane.showMessageDialog);
+
+import javax.swing.JOptionPane;
+
+public class NomeSobrenome {
+    public static void main(String[] args) {
+        String nome = JOptionPane.showInputDialog("Digite seu nome:");
+        String sobrenome = JOptionPane.showInputDialog("Digite seu sobrenome:");
+        String mensagem = "Seu nome completo é: " + nome + " " + sobrenome;
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
+}
+
+2) Crie um programa com dois vetores de inteiros de 10 posições. Faça o usuário informar 10 valores inteiros
+através de uma janela de entrada e armazene em um vetor. Depois copie os dados do vetor com dados para o outro
+vetor sem dados pegando os valores do primeiro vetor de trás pra frente. E mostre os dados dos vetores no console.
+
+import javax.swing.JOptionPane;
+
+public class CopiaVetor {
+    public static void main(String[] args) {
+        int[] vetor1 = new int[10];
+        int[] vetor2 = new int[10];
+
+        // Solicita ao usuário que informe 10 valores inteiros e armazena no vetor1
+        for (int i = 0; i < 10; i++) {
+            vetor1[i] = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor " + (i + 1) + ":"));
+        }
+
+        // Copia os dados do vetor1 para o vetor2, de trás pra frente
+        for (int i = 0; i < 10; i++) {
+            vetor2[i] = vetor1[9 - i];
+        }
+
+        // Mostra os dados dos vetores no console
+        System.out.println("Valores do vetor1:");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(vetor1[i]);
+        }
+
+        System.out.println("Valores do vetor2:");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(vetor2[i]);
+        }
+    }
+}
+
+3) Leia 10 números e informe se ele é par ou ímpar. Obs: um número é par se o resto da
+divisão dele por dois dá zero, ou seja: (N%2 == 0). 
+
+import java.util.Scanner;
+
+public class ParImpar {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Leitura dos 10 números
+        System.out.println("Digite 10 números:");
+        for (int i = 1; i <= 10; i++) {
+            int numero = sc.nextInt();
+            if (numero % 2 == 0) {
+                System.out.println("O número " + numero + " é par.");
+            } else {
+                System.out.println("O número " + numero + " é ímpar.");
+            }
+        }
+
+        sc.close();
+    }
+}
+
+4) Entrar com o salario de 5 pessoas e imprimir o desconto de INSS segundo a tabela a seguir:
+
+- Menor ou igual a R$600,00 – isento de INSS;
+- maior que R$600,00 e menor ou igual a R$1200,00 – 25% de INSS;
+- maior que R$1200,00 e menor ou igual a R$2000,00 – 25% de INSS;
+- maior que R$2000,00 = 3-% de INSS.
+
+import java.util.Scanner;
+
+public class DescontoINSS {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double salario, inss;
+
+        // Leitura dos salários e cálculo do desconto de INSS
+        for (int i = 1; i <= 5; i++) {
+            System.out.print("Digite o salário da " + i + "ª pessoa: R$");
+            salario = sc.nextDouble();
+
+            if (salario <= 600) {
+                inss = 0;
+            } else if (salario <= 1200) {
+                inss = salario * 0.25;
+            } else if (salario <= 2000) {
+                inss = salario * 0.25;
+            } else {
+                inss = salario * 0.30;
+            }
+
+            System.out.printf("O desconto de INSS da %dª pessoa é de R$%.2f\n", i, inss);
+        }
+
+        sc.close();
+    }
+}
+
+5)  Entrar com a idade de 15 pessoas e informar:
+
+- Se é maior de idade;
+- Se é menor de idade;
+- Se tem mais de 60 anos.
+
+import java.util.Scanner;
+
+public class VerificaIdade {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int idade;
+
+        // Leitura das idades e verificação
+        for (int i = 1; i <= 15; i++) {
+            System.out.print("Digite a idade da " + i + "ª pessoa: ");
+            idade = sc.nextInt();
+
+            if (idade >= 18) {
+                System.out.println("A " + i + "ª pessoa é maior de idade.");
+            } else {
+                System.out.println("A " + i + "ª pessoa é menor de idade.");
+            }
+
+            if (idade > 60) {
+                System.out.println("A " + i + "ª pessoa tem mais de 60 anos.");
+            }
+        }
+
+        sc.close();
+    }
+}
+
+
+ 
